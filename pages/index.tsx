@@ -62,7 +62,7 @@ const Home = ({products}) =>{
                                     {product.name}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Latest
+                                    {product.quantity > 0 ? "Latest" : "Out Of Stock"}
                                 </Typography>
                               </CardContent>
                             </CardActionArea>
