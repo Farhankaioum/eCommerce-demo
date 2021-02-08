@@ -1,0 +1,106 @@
+.container {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerFluid{
+  width: 80%;
+  min-height: 95vh;
+  margin: 20px auto;
+}
+
+.img{
+  height: 75vh;
+  width: 80%;
+  border: 5px solid rgb(44, 43, 43);
+  border-radius: 5px;
+  box-shadow: 2px 5px 16px 2px #0B325E;
+}
+
+.imgdiv{
+  width: 50%;
+  float: left;
+  overflow: hidden;
+}
+
+.detailsDiv{
+  width: 50%;
+  display:inline-block;
+  overflow: hidden;
+}
+
+.h2{
+  border-bottom: 1px solid rgba(90, 82, 82, 0.3);
+  padding-bottom: 15px;
+}
+
+.price{
+  background-color: #269AF6;
+  padding:10px;
+  border: 1px solid #999;
+  text-align: center;
+  color: #ffffff;
+  max-width: 25%;
+  font-size: 16px;
+}
+
+.btn, .btnDisable{
+  margin-top: 25px;
+  background-color: #FF3346;
+  padding: 15px 20px;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 14px;
+  border: 1px solid #999;
+  text-transform: uppercase;
+  min-width: 60%;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btnDisable
+{
+  cursor: not-allowed;
+  pointer-events: none;
+
+  color: #c0c0c0;
+  background-color: #ffffff;
+
+}
+
+.quantity{
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.quantitySub{
+  margin-left: 60px;
+}
+
+.quantitySub input {
+  padding: 10px 8px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.detail{
+  color: #999;
+  margin-top: 15px;
+  letter-spacing: 2px;
+  text-align: justify;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.root {
+  max-width: 345
+}
+.media {
+  height: 140
+}
+
+/* Details page*/

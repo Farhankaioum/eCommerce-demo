@@ -1,0 +1,41 @@
+*{
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+body{
+    min-height: 90vh;
+    position: relative;
+}
+
+.rootcard{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    max-width: 40%;
+    margin: 20px;
+}
+
+.select-board-size{
+    padding: 10px;
+}
+
+.form-control{
+    display: block;
+    padding: 10px 15px;
+}
+
+footer{
+    width: 100%;
+    color: #f363cf;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 2px solid #999;
+    margin-top: 20px;
+}
