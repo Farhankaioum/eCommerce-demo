@@ -12,8 +12,6 @@ import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { localStorageData } from '../functions';
-
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
@@ -32,17 +30,17 @@ const useStyles = makeStyles({
     }
   });
 
-const MyOrder = () => {
+const MyOrder = ({orders}) => {
+
+    console.log('orders from api ', orders);
 
     const classes = useStyles();
-
-    let userOrders = localStorageData('user-orders');
 
     return (
       <div>
 
           {
-              Object.keys(userOrders).length === 0 ? 
+              Object.keys(orders).length === 0 ? 
                <div> 
                    <h2 className={classes.txt}>You have no orders history</h2>
                </div> 
@@ -62,7 +60,7 @@ const MyOrder = () => {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {userOrders.orders.map((order) => (
+                            {orders.orders.map((order) => (
                                 
                             <TableRow key={order.id} onClick={() => Router.push(`/orders/${order.id}`)} className={classes.link}>
                                 <TableCell component="th" scope="row">
@@ -84,19 +82,6 @@ const MyOrder = () => {
       </div>
     );
   }
-
-  // export async function getServerSideProps(context) {
-
-  //   const res = await fetch(`http://localhost:3000/api/orders`);
-  //   const data = await res.json();
-
-  //   return {
-  //     props: 
-  //     {
-  //       orders: data
-  //     },
-  //   }
-  // }
    
   export default MyOrder;
 

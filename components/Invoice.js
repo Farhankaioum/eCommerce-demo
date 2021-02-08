@@ -1,10 +1,10 @@
 import styles from '../styles/Invoice.module.css'
 
-const Invoice = (data) => {
+const Invoice = ({data}) => {
     let count = 0;
     
     return(
-
+        
         <div className={styles.invoiceBox}>
             <table cellPadding="0" cellSpacing="0">
                 <tbody>
@@ -18,7 +18,7 @@ const Invoice = (data) => {
                                 </td>
                                 <td className={styles.td}>
                                     Invoice #: 123<br/>
-                                   <span className={styles.date}>{data.data.date}</span> <br/>
+                                   <span className={styles.date}>{data.date}</span> <br/>
                                 </td>
                             </tr>
                             </tbody>
@@ -38,8 +38,8 @@ const Invoice = (data) => {
                                 </td>
                                 
                                 <td>
-                                    {data.data.user.name}<br/>
-                                    {data.data.user.phone}
+                                    {data.user.name}<br/>
+                                    {data.user.phone}
                                 </td>
                             </tr>
                             </tbody>
@@ -62,7 +62,7 @@ const Invoice = (data) => {
                     <td></td>
                     <td></td>
                     <td>
-                        {data.data.totalPrice}
+                        {data.totalPrice}
                     </td>
                 </tr>
 
@@ -83,7 +83,7 @@ const Invoice = (data) => {
             
             {
                 
-                data.data.items.map(order => (
+                data.items.map(order => (
 
                 <tr key={count++} className={styles.item}>
                     <td>
@@ -107,7 +107,7 @@ const Invoice = (data) => {
                 <td></td>
                 <td></td>
                 <td colSpan="2">
-                   Total: {data.data.totalPrice}.00 TK
+                   Total: {data.totalPrice}.00 TK
                 </td>
             </tr>
             </tbody>

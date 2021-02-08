@@ -5,13 +5,23 @@ const DynamicComponent = dynamic(
     { ssr: false }
   )
 
-const Orders = () => {
-    
+const Orders = ({orders}) => {
+
     return (
         <div>
-            <DynamicComponent/>
+            <DynamicComponent orders={orders}/>
         </div>
     );
 }
+
+export async function getStaticProps(){
+    const res = await fetch(`http://localhost:3000/api/order`);
+    const data = await res.json();
+    return {
+      props:{
+        orders:data
+      }
+    }
+   }
 
 export default Orders

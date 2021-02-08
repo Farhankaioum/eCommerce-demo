@@ -18,7 +18,6 @@ import Router from "next/router";
 
 import {localStorageData, date} from '../functions';
 import { AppContext } from '../components/context/AppConext';
-import { userOrderPlace } from '../functions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,8 +60,8 @@ const Checkout = () => {
 
     let carts = localStorageData('shopping-cart')
 
-    const orderHandler = event => {
-        event.preventDefault();
+    const orderHandler = async event => {
+        event.preventDefault() 
         
         var order = {
             user: {name: event.target.name.value, phone: event.target.phone.value, address: event.target.address.value},
@@ -72,15 +71,18 @@ const Checkout = () => {
             date: date(),
             id: 1
         }
-
-        console.log('order details: ', JSON.stringify(order));
         
-        let orderId = userOrderPlace(JSON.stringify(order))
+        const res = await fetch("http://localhost:3000/api/order", {
+            method: "POST",
+            body: JSON.stringify(order),
+          })
+        
+        const result = await res.json();
 
         localStorage.removeItem('shopping-cart');
         setCart('');
 
-        Router.push(`/orders/${orderId}`)
+        Router.push(`/orders/${result.id}`);
 
       }
     
@@ -92,7 +94,7 @@ const Checkout = () => {
                     <Paper className={classes.paper}>
 
                         <form className={classes.form} onSubmit={orderHandler}>
-                            <>
+                            <div>
                                 <TextField
                                     id="name"
                                     label="Name"
@@ -100,7 +102,7 @@ const Checkout = () => {
                                     name="name"
                                     required
                                 />
-                            </>
+                            </div>
                             <div>
                                 <TextField
                                     id="phone"

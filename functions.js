@@ -1,6 +1,6 @@
 export const addFirstProduct = ( product, qty ) => {
     
-    let productPrice = product.price;
+    let productPrice = product.price * qty;
 
 	let newCart = {
 		products: [],
@@ -128,11 +128,7 @@ export const deleteProductFromCart = (productId)=>{
 		}else{
 			localStorage.setItem( 'shopping-cart', JSON.stringify( existingCart ) );
 		}
-
 		
-
-
-
 		return existingCart;
 
 	}

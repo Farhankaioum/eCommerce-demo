@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
   });
 
-const Cart = ({cartProducts})=> {
+const Cart = ()=> {
 
     const [ cart, setCart ] = useContext( AppContext );
 
@@ -50,52 +50,52 @@ const Cart = ({cartProducts})=> {
         <>
         <CssBaseline />
         <Container maxWidth="xl" className={styles.container}>
-            { Object.keys(carts).length == 0  && <div className={styles.message}>No item into your shopping cart</div>}
+            { Object.keys(carts).length == 0  && <span className={styles.message}>No item into your shopping cart</span>}
             { Object.keys(carts).length != 0  && 
-               
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Product</TableCell>
-                                <TableCell align="right">Price</TableCell>
-                                <TableCell align="right">Quantity</TableCell>
-                                <TableCell align="right">Total Price</TableCell>
-                                <TableCell align="right">Action</TableCell>
+        <>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Product</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                            <TableCell align="right">Quantity</TableCell>
+                            <TableCell align="right">Total Price</TableCell>
+                            <TableCell align="right">Action</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        { carts.products.map((product) => (
+                            <TableRow key={product.productId}>
+                                <TableCell component="th" scope="row">
+                                    <img className={styles.productImg} src={product.image} alt="product-img"/>
+                                    <h2>{product.name}</h2>
+                                </TableCell>
+                                <TableCell align="right" style={{ verticalAlign: 'top'}}>{product.price}</TableCell>
+                                <TableCell align="right" style={{ verticalAlign: 'top' }}>
+                                    <SelectBoardSize total={product.availableItem} selectNum={product.qty} product={product}/>
+                                </TableCell>
+                                <TableCell align="right" style={{ verticalAlign: 'top' }}>{product.totalPrice}</TableCell>
+                                <TableCell align="right" style={{ verticalAlign: 'top' }}>
+                                    <button type="button" className={styles.btnDanger} onClick={() => { deleteProduct(product.productId)}}>Delete</button>
+                                </TableCell>
                             </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            { carts.products.map((product) => (
-                                <TableRow key={product.productId}>
-                                    <TableCell component="th" scope="row">
-                                        <img className={styles.productImg} src={product.image} alt="product-img"/>
-                                        <h2>{product.name}</h2>
-                                    </TableCell>
-                                    <TableCell align="right" style={{ verticalAlign: 'top'}}>{product.price}</TableCell>
-                                    <TableCell align="right" style={{ verticalAlign: 'top' }}>
-                                        <SelectBoardSize total={product.availableItem} selectNum={product.qty} product={product}/>
-                                    </TableCell>
-                                    <TableCell align="right" style={{ verticalAlign: 'top' }}>{product.totalPrice}</TableCell>
-                                    <TableCell align="right" style={{ verticalAlign: 'top' }}>
-                                        <button type="button" className={styles.btnDanger} onClick={() => { deleteProduct(product.productId)}}>Delete</button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
 
-                <div className={styles.div}>
-                    <div className={styles.totalAmount}>
-                        Total amount: <span className={styles.red}>{carts.totalProductsPrice}</span>
-                    </div>
-                    <div className={styles.checkoutBtn}>
-                        <Button variant="contained" fullWidth color="primary" onClick={() => Router.push("/checkout")}>
-                            Process to Checkout
-                        </Button>
-                    </div>
+            <div className={styles.div}>
+                <div className={styles.totalAmount}>
+                    Total amount: <span className={styles.red}>{carts.totalProductsPrice}</span>
                 </div>
-                </TableContainer>
-        
+                <div >
+                    <Button className={styles.checkoutBtn} variant="contained" fullWidth color="primary" onClick={() => Router.push("/checkout")}>
+                        Process to Checkout
+                    </Button>
+                </div>
+            </div>
+        </>
             }
         </Container>
         </>

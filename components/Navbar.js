@@ -64,9 +64,8 @@ const NavBar = () => {
                     <Grid item>
 
                         {/* shopping cart */}
-                        <IconButton>
+                        
                             <CartIcon/>
-                        </IconButton>
 
                         <IconButton>
                             <Link href="/orders">

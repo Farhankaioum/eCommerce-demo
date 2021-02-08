@@ -22,7 +22,7 @@ const Product = ({product})=> {
                   {
                     available === true &&
                     <p className={styles.quantity}>Quantity: 
-                    <span className={styles.quantitySub}><input type="number" onChange={(e) => { setCount(e.target.value) }} value={count} min="1" max={product.quantity}/></span>
+                      <input type="number" className={styles.quantitySub} onChange={(e) => { setCount(e.target.value) }} value={count} min="1" max={product.quantity}/>
                     </p>
                   }
                   {
