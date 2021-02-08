@@ -21,19 +21,22 @@ const Product = ({product})=> {
                   <p className={styles.detail}>{product.about}</p>
                   {
                     available === true &&
-                    <p className={styles.quantity}>Quantity: 
+                  <> <p className={styles.quantity}>Quantity: 
                       <input type="number" className={styles.quantitySub} onChange={(e) => { setCount(e.target.value) }} value={count} min="1" max={product.quantity}/>
                     </p>
+                    <AddToCartButton product={product} qty={count}/>
+                  </>
                   }
                   {
                     available !== true &&
+                    <>
                     <p className={styles.quantity}>Available: 
                       <span className={styles.quantitySub}>Out of Stock</span>
                     </p>
+                    <button className={available===true ? styles.btn : styles.btnDisable} type="button">Add to Cart</button>
+                    </>
                   }
                   
-                  {/* <button className={available===true ? styles.btn : styles.btnDisable} type="button">Add to Cart</button> */}
-                  <AddToCartButton product={product} qty={count}/>
               </div>
             </div>
             
