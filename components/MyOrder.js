@@ -85,18 +85,18 @@ const MyOrder = ({orders}) => {
     );
   }
 
-  export async function getServerSideProps(context) {
+  // export async function getServerSideProps(context) {
 
-    const res = await fetch(`http://localhost:3000/api/orders`);
-    const data = await res.json();
+  //   const res = await fetch(`http://localhost:3000/api/orders`);
+  //   const data = await res.json();
 
-    return {
-      props: 
-      {
-        orders: data
-      },
-    }
-  }
+  //   return {
+  //     props: 
+  //     {
+  //       orders: data
+  //     },
+  //   }
+  // }
    
   export default MyOrder;
 
