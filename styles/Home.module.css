@@ -66,7 +66,6 @@
 {
   cursor: not-allowed;
   pointer-events: none;
-
   color: #c0c0c0;
   background-color: #ffffff;
 
@@ -75,16 +74,32 @@
 .quantity{
   font-size: 22px;
   text-transform: uppercase;
+  margin-bottom: 0;
 }
 
-.quantitySub{
-  margin-left: 60px;
+.avlProduct{
+  font-size: 18px;
+  margin-top: 30px;
+
+}
+.avlProductSpan{
+  color: #FF3346;
+}
+
+
+.selectBoardSize{
+  padding: 12px;
+  font-size: 14px;
+  margin-left: 40px;
+  display: inline-block;
 }
 
 .quantitySub {
+  margin-left: 60px;
   padding: 10px 8px;
   font-size: 16px;
   display: inline-block;
+  color: red;
 }
 
 .detail{

@@ -15,10 +15,8 @@ const SelectBoardSize = ({total, selectNum, product})=> {
         if(process.browser){
 
             let existingCardData = localStorageData('shopping-cart');
-            console.log('updateCartInfo ', existingCardData);
 
             const updatedCart = updateCart(existingCardData, product, e.target.value, true);
-            console.log('updateCartInfo updatedCart ', updatedCart);
             setCart( updatedCart );
         }
 

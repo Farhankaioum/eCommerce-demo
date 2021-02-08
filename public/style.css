@@ -21,7 +21,10 @@ body{
 }
 
 .select-board-size{
-    padding: 10px;
+    padding: 12px;
+    font-size: 14px;
+    margin-left: 10px;
+    display: inline-block;
 }
 
 .form-control{
