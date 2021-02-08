@@ -5,7 +5,7 @@ import Invoice from '../../components/Invoice'
 
 import { localStorageData } from '../../functions'
 
-const Order = ({order}) => {
+const Order = () => {
 
     const router = useRouter();
     let id = router.query.id;

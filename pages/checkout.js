@@ -62,9 +62,7 @@ const Checkout = () => {
     let carts = localStorageData('shopping-cart')
 
     const orderHandler = event => {
-        event.preventDefault() 
-
-        
+        event.preventDefault();
         
         var order = {
             user: {name: event.target.name.value, phone: event.target.phone.value, address: event.target.address.value},

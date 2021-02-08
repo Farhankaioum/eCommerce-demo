@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     }
   });
 
-const MyOrder = ({orders}) => {
+const MyOrder = () => {
 
     const classes = useStyles();
 
