@@ -5,7 +5,7 @@ const path = 'helpers/data/products.json';
 export default function handler(req, res) {
   
     let data = loadData();
-    res.status(200).json({products: JSON.parse(data)});
+    res.status(200).json(JSON.parse(data));
 
 }
 

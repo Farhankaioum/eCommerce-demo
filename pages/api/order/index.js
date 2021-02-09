@@ -14,9 +14,8 @@ export default function handler(req, res) {
       let newOrder = JSON.parse(req.body);
 
       let orderId = PrevOrder.length + 1
-      console.log('orderId ', orderId, PrevOrder.length + 1);
       newOrder.id = orderId;
-      
+
       fs.writeFile(
         path,
         JSON.stringify([...PrevOrder, newOrder]),
@@ -40,7 +39,7 @@ export default function handler(req, res) {
       res.status(200).json({id: newOrder.id});
     }
   }
-  else{
+  else{ // get request
 
     let data = loadData();
     res.status(200).json({orders: JSON.parse(data)});

@@ -37,8 +37,6 @@ const MyOrder = ({orders}) => {
        
    });
 
-   console.log('sortOrders ', sortOrders);
-
     const classes = useStyles();
 
     return (

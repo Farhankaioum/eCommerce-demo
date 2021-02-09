@@ -9,7 +9,7 @@ export default function ordertHandler({ query: { id } }, res) {
     if(!isObjectEmpty(productData)){
 
         let products = JSON.parse(productData);
-        let filterProduct = products.filter((product) => {
+        let filterProduct = products.products.filter((product) => {
             return product.id == id;
         });
 

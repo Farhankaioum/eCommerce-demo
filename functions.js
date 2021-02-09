@@ -232,3 +232,47 @@ export const date = () => {
 	return newDate;
 	
 }
+
+export const IsProductsAvailable = async (cartsProduct)=>{
+
+	const res = await fetch("http://localhost:3000/api/product");  
+    const result = await res.json();
+
+	let counter = 0;
+	
+	cartsProduct.products.map((cart) => {
+		
+		result.products.map((product) => {
+			if(cart.productId == product.id){
+
+				if(cart.qty > product.quantity){
+					counter = counter + 1;
+				}	
+					
+			}
+		})
+	})
+
+	return counter == 0;
+	
+}
+
+export const changingSomething = async () => {
+
+	const res = await fetch("http://localhost:3000/api/product");  
+    const productsData = await res.json();
+
+	let cartsProduct = localStorageData('shopping-cart');
+
+	cartsProduct.products.map((cart) => {
+		
+		productsData.products.map((product) => {
+			if(cart.productId == product.id){
+
+				product.quantity = product.quantity - cart.qty;		
+			}
+		})
+	})
+
+	return productsData;
+}

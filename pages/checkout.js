@@ -16,7 +16,7 @@ import {
 import React, { useContext } from "react";
 import Router from "next/router";
 
-import {localStorageData, date} from '../functions';
+import {localStorageData, date, IsProductsAvailable, changingSomething} from '../functions';
 import { AppContext } from '../components/context/AppConext';
 
 const useStyles = makeStyles((theme) => ({
@@ -60,6 +60,7 @@ const Checkout = () => {
 
     let carts = localStorageData('shopping-cart')
 
+    // order posting method
     const orderHandler = async event => {
         event.preventDefault() 
         
@@ -71,18 +72,42 @@ const Checkout = () => {
             date: date(),
             id: 1
         }
-        
-        const res = await fetch("http://localhost:3000/api/order", {
-            method: "POST",
-            body: JSON.stringify(order),
-          })
-        
-        const result = await res.json();
 
-        localStorage.removeItem('shopping-cart');
-        setCart('');
+        //console.log('order ', order);
 
-        Router.push(`/orders/${result.id}`);
+        let productAvailAble = await IsProductsAvailable(carts);
+        let decision = await productAvailAble;
+
+        let updatedProductInfo = await changingSomething();
+        let changingInfo = await updatedProductInfo;
+        
+        if(decision) {
+
+            const res = await fetch("http://localhost:3000/api/order", {
+                method: "POST",
+                body: JSON.stringify(order),
+            })
+            
+            const result = await res.json();
+
+            const productRes = await fetch("http://localhost:3000/api/updateProduct", {
+                method: "POST",
+                body: JSON.stringify(changingInfo),
+            })
+            const productUpdateResult = await productRes;
+
+            localStorage.removeItem('shopping-cart');
+            setCart('');
+
+            Router.push(`/orders/${result.id}`);
+
+        } else{
+            alert('Product is not available, please try again later!');
+
+            localStorage.removeItem('shopping-cart');
+            setCart('');
+            Router.push("/");
+        }
 
       }
     
