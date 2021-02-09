@@ -158,6 +158,24 @@ export const localStorageData = (key) =>{
 
 }
 
+export const NumOfProductInsideCart = (id)=>{
+
+	let existingCarts = localStorageData('shopping-cart')
+    if(Object.keys(existingCarts).length !== 0){
+      
+      let existingProduct = existingCarts.products.filter((p) => {
+          return p.productId == id;
+      })
+      
+      if(existingProduct.length > 0){
+        let cartProduct = existingProduct[0];
+        return cartProduct.qty;
+      }
+    }
+
+	return 0;
+}
+
 // place user order
 export const userOrderPlace = (data) => {
 

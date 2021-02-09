@@ -3,13 +3,17 @@ import {useState} from 'react'
 import React from 'react';
 import _ from 'lodash';
 import AddToCartButton from '../../components/cart/AddToCartButton'
+import {NumOfProductInsideCart} from '../../functions';
 
 const Product = ({product})=> {
 
     if (!product) return <div>Loading...</div>
 
+    let productCountInsideCart = NumOfProductInsideCart(product.id);
+    console.log('productCountInsideCart ', productCountInsideCart);
+
     const [count, setCount] = useState(1);
-    const [availableQty, setAvailableQty] = useState(product.quantity);
+    const [availableQty, setAvailableQty] = useState(product.quantity - productCountInsideCart);
 
     const available = availableQty > 0 ? true : false;
 
