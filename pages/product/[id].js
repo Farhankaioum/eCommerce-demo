@@ -14,7 +14,6 @@ const Product = ({product})=> {
     const available = product.quantity > 0 ? true : false;
 
     const updateAvailableProduct = () => {
-      console.log('count ', availableQty - count);
       setAvailableQty(parseInt(availableQty - count))
     }
 
@@ -30,10 +29,7 @@ const Product = ({product})=> {
                   <p className={styles.detail}>{product.about}</p>
                   {
                     available === true &&
-                  <> 
-                    {/* <p className={styles.quantity}>Quantity: 
-                        <input type="number" className={styles.quantitySub} onChange={(e) => { setCount(e.target.value) }} value={count} min="1" max={product.quantity}/>
-                    </p> */}
+                  <>
                     <p className={styles.avlProduct}>Product Available: <span className={styles.avlProductSpan}>{availableQty}</span></p>
                     <p className={styles.quantity}>Quantity: 
                       <select onChange={(e) => {  setCount(e.target.value)}} defaultValue={'1'}  className={styles.selectBoardSize}>
@@ -44,7 +40,7 @@ const Product = ({product})=> {
                       </select>
                     </p>
                      
-                    <AddToCartButton onClick={() => updateAvailableProduct}  product={product} qty={count}/>
+                    <AddToCartButton updateAvailableProduct={updateAvailableProduct}  product={product} qty={count}/>
                   </>
                   }
 

@@ -8,7 +8,11 @@ const AddToCartButton = (props) => {
 
     const [ cart, setCart ] = useContext( AppContext );
 
+   
+
     const handleAddToCartClick = () => {
+
+        props.updateAvailableProduct();
         
         if(process.browser){
             let existingCart = localStorage.getItem('shopping-cart');
