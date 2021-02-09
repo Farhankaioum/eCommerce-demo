@@ -43,7 +43,7 @@ const Home = ({products}) =>{
               container spacing={2}
               className={classes.mainDiv}>
             {
-                 products.map(product => (
+                 products.products.map(product => (
                   <Slide key={product.id} direction="up" in={true}>
                     <Grid item md={3}>
                         <Link href={`/product/${product.id}`}>
@@ -89,7 +89,7 @@ const Home = ({products}) =>{
  }
 
  export async function getStaticProps(){
-  const res = await fetch(`http://localhost:3000/api/products`);
+  const res = await fetch(`http://localhost:3000/api/product`);
   const data = await res.json();
   return {
     props:{
