@@ -8,8 +8,6 @@ const AddToCartButton = (props) => {
 
     const [ cart, setCart ] = useContext( AppContext );
 
-   
-
     const handleAddToCartClick = () => {
 
         props.updateAvailableProduct();

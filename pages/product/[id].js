@@ -11,7 +11,7 @@ const Product = ({product})=> {
     const [count, setCount] = useState(1);
     const [availableQty, setAvailableQty] = useState(product.quantity);
 
-    const available = product.quantity > 0 ? true : false;
+    const available = availableQty > 0 ? true : false;
 
     const updateAvailableProduct = () => {
       setAvailableQty(parseInt(availableQty - count))
