@@ -32,7 +32,12 @@ const useStyles = makeStyles({
 
 const MyOrder = ({orders}) => {
 
-    console.log('orders from api ', orders);
+   let sortOrders = orders.orders.sort(function(a, b) {
+       return (a.id < b.id) ? 1 : -1
+       
+   });
+
+   console.log('sortOrders ', sortOrders);
 
     const classes = useStyles();
 
@@ -60,7 +65,7 @@ const MyOrder = ({orders}) => {
                             </TableRow>
                             </TableHead>
                             <TableBody>
-                            {orders.orders.map((order) => (
+                            {sortOrders.map((order) => (
                                 
                             <TableRow key={order.id} onClick={() => Router.push(`/orders/${order.id}`)} className={classes.link}>
                                 <TableCell component="th" scope="row">
