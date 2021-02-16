@@ -11,9 +11,14 @@ const Order = ({order}) => {
     )
 }
 
-export async function getStaticProps({params:{id}}) {
+export async function getServerSideProps({params:{id}}) {
 
-    const res = await fetch(`http://localhost:3000/api/order/${id}`);
+    const res = await fetch(`http://localhost:3000/api/order/${id}`, {
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'User-Agent': '*',
+      },
+    });
     const data = await res.json();
 
     return {
@@ -24,13 +29,13 @@ export async function getStaticProps({params:{id}}) {
 
    }
 
-   export async function getStaticPaths() {
-    return {
-      paths: [
-        { params: { id: '1' } },
-      ],
-      fallback: true
-    };
-  }
+  //  export async function getStaticPaths() {
+  //   return {
+  //     paths: [
+  //       { params: { id: '1' } },
+  //     ],
+  //     fallback: true
+  //   };
+  // }
 
 export default Order

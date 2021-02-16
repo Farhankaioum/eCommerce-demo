@@ -88,8 +88,13 @@ const Home = ({products}) =>{
   );
  }
 
- export async function getStaticProps(){
-  const res = await fetch(`http://localhost:3000/api/product`);
+ export async function getServerSideProps(){
+  const res = await fetch(`http://localhost:3000/api/product`, {
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent': '*',
+    },
+  });
   const data = await res.json();
   return {
     props:{

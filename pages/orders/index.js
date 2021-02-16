@@ -14,8 +14,13 @@ const Orders = ({orders}) => {
     );
 }
 
-export async function getStaticProps(){
-    const res = await fetch(`http://localhost:3000/api/order`);
+export async function getServerSideProps(){
+    const res = await fetch(`http://localhost:3000/api/order`, {
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'User-Agent': '*',
+      },
+    });
     const data = await res.json();
     return {
       props:{
